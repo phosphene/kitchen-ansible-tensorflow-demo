@@ -1,0 +1,4 @@
+- hosts: localhost
+#- hosts: all
+  roles:
+  - frank6866.tensorflow

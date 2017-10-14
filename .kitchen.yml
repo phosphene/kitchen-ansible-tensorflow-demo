@@ -1,13 +1,24 @@
 ---
 driver:
   name: docker
+  binary: /usr/bin/docker
+  use_sudo: false
 
 provisioner:
-  name: chef_solo
+  name: ansible_playbook
+  hosts: tensors
+  ansible_connection: local
+  ansible_verbose: true
+  ansible_verbosity: 4
+  ansible_apt_repo: ppa:ansible/ansible-2.3
+  require_chef_for_busser: false
+  require_pip: true
+  requirements_path: requirements.yml
+
 
 platforms:
-  - name: ubuntu-14.04
-  - name: centos-7.2
+  - name: ubuntu-16.04
+
 
 suites:
   - name: default
